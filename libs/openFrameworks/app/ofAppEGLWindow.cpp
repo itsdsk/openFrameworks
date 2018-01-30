@@ -613,21 +613,26 @@ bool ofAppEGLWindow::createSurface() {
 	iter = settings.frameBufferAttributes.begin();
 	iterEnd = settings.frameBufferAttributes.end();
 	i = 0;
+	cout << "fb attributes" << endl;
 	for(; iter != iterEnd; iter++) {
 		attribute_list_framebuffer_config[i++] = iter->first;
+		cout << attribute_list_framebuffer_config[i] << endl;
 		attribute_list_framebuffer_config[i++] = iter->second;
+		cout << attribute_list_framebuffer_config[i] << endl;
 	}
 	attribute_list_framebuffer_config[i++] = EGL_RENDERABLE_TYPE;
+			cout << attribute_list_framebuffer_config[i] << endl;
+
 	attribute_list_framebuffer_config[i++] = glesVersion; //openGL ES version
+			cout << attribute_list_framebuffer_config[i] << endl;
+
 	attribute_list_framebuffer_config[i] = EGL_NONE; // add the terminator
+			cout << attribute_list_framebuffer_config[i] << endl;
+
+	cout << "end of fb attributes" << endl;
 
 	EGLint num_configs;
 	
-	cout << "fb atts: " << endl;
-	cout << settings.frameBufferAttributes << endl;
-	cout << "attributes:" << endl;
-	cout << attribute_list_framebuffer_config << endl;
-        cout << "-----" << endl;
 	
 	// get an appropriate EGL frame buffer configuration
 	// http://www.khronos.org/registry/egl/sdk/docs/man/xhtml/eglChooseConfig.html
