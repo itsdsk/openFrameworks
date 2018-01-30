@@ -656,7 +656,7 @@ bool ofAppEGLWindow::createSurface() {
 		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_RENDERABLE_TYPE,&crVal);
 		std::cout<<"Renderable type "<<crVal==EGL_OPENGL_ES_BIT?"EGL_OPENGL_ES_BIT":
 			                       crVal==EGL_OPENGL_ES2_BIT?"EGL_OPENGL_ES2_BIT":
-					       crVal==EGL_OPENGL_BIT?"EGL_OPENGL_BIT":crVal<<"\n";
+					       crVal==EGL_OPENGL_BIT?"EGL_OPENGL_BIT":"othercrval"<<"\n";
 		std::cout<<"--------------------------------------------------------------------------\n";
 
 }
@@ -681,7 +681,7 @@ bool ofAppEGLWindow::createSurface() {
 	attribute_list_framebuffer_config[i] = EGL_NONE; // add the terminator
 cout << "framebufferattributes size:"<<endl;
 	cout << settings.frameBufferAttributes.size() << endl;
-	cout << attribute_list_framebuffer_config.size() << endl;
+	cout << (settings.frameBufferAttributes.size() * 2 + 3) << endl;
 	cout << "end fbattrs" << endl;
 		std::cout<<"Desired Config"<<"\n";
 		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_BUFFER_SIZE,&crVal);
@@ -696,7 +696,7 @@ cout << "framebufferattributes size:"<<endl;
 		std::cout<<"Alpha Size "<<settings.frameBufferAttributes[EGL_ALPHA_SIZE]<<"\n";
 		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_CONFIG_CAVEAT,&crVal);
 		std::cout<<(settings.frameBufferAttributes[EGL_CONFIG_CAVEAT]==EGL_SLOW_CONFIG?"EGL_SLOW_CONFIG":
-			    settings.frameBufferAttributes[EGL_CONFIG_CAVEAT]== EGL_NON_CONFORMANT_CONFIG?"EGL_NON_CONFORMANT_CONFIG"):"0"<<"\n";
+			    settings.frameBufferAttributes[EGL_CONFIG_CAVEAT]== EGL_NON_CONFORMANT_CONFIG?"EGL_NON_CONFORMANT_CONFIG":"0")<<"\n";
 		//switch(crVal)
 		//{
 		//	case  EGL_NONE : std::cout<<"EGL_CONFIG_CAVEAT EGL_NONE\n"; break;
