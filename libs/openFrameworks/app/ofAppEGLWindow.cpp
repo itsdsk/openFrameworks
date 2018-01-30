@@ -696,7 +696,7 @@ cout << "framebufferattributes size:"<<endl;
 		std::cout<<"Alpha Size "<<settings.frameBufferAttributes[EGL_ALPHA_SIZE]<<"\n";
 		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_CONFIG_CAVEAT,&crVal);
 		std::cout<<(settings.frameBufferAttributes[EGL_CONFIG_CAVEAT]==EGL_SLOW_CONFIG?"EGL_SLOW_CONFIG":
-			    settings.frameBufferAttributes[EGL_CONFIG_CAVEAT]== EGL_NON_CONFORMANT_CONFIG?"EGL_NON_CONFORMANT_CONFIG"):0<<"\n";
+			    settings.frameBufferAttributes[EGL_CONFIG_CAVEAT]== EGL_NON_CONFORMANT_CONFIG?"EGL_NON_CONFORMANT_CONFIG"):"0"<<"\n";
 		//switch(crVal)
 		//{
 		//	case  EGL_NONE : std::cout<<"EGL_CONFIG_CAVEAT EGL_NONE\n"; break;
