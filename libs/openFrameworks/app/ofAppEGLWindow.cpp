@@ -622,9 +622,13 @@ bool ofAppEGLWindow::createSurface() {
 	attribute_list_framebuffer_config[i] = EGL_NONE; // add the terminator
 
 	EGLint num_configs;
+	
+	cout << "fb atts: " << endl;
+	cout << settings.frameBufferAttributes << endl;
 	cout << "attributes:" << endl;
 	cout << attribute_list_framebuffer_config << endl;
         cout << "-----" << endl;
+	
 	// get an appropriate EGL frame buffer configuration
 	// http://www.khronos.org/registry/egl/sdk/docs/man/xhtml/eglChooseConfig.html
 	result = eglChooseConfig(eglDisplay,
