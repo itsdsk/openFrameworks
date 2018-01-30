@@ -654,9 +654,9 @@ bool ofAppEGLWindow::createSurface() {
 		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_TRANSPARENT_TYPE,&crVal);
 		std::cout<<"Transparent type "<<crVal<<"\n";
 		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_RENDERABLE_TYPE,&crVal);
-		std::cout<<"Renderable type "<<crVal==EGL_OPENGL_ES_BIT?"EGL_OPENGL_ES_BIT":
+		std::cout<<"Renderable type "<<(crVal==EGL_OPENGL_ES_BIT?"EGL_OPENGL_ES_BIT":
 			                       crVal==EGL_OPENGL_ES2_BIT?"EGL_OPENGL_ES2_BIT":
-					       crVal==EGL_OPENGL_BIT?"EGL_OPENGL_BIT":"othercrval"<<"\n";
+					       crVal==EGL_OPENGL_BIT?"EGL_OPENGL_BIT":"othercrval")<<"\n";
 		std::cout<<"--------------------------------------------------------------------------\n";
 
 }
