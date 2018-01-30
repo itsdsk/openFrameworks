@@ -652,6 +652,9 @@ bool ofAppEGLWindow::createSurface() {
 		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_SURFACE_TYPE,&crVal);
 		std::cout<<"Surface type "<<crVal<<"\n";
 		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_TRANSPARENT_TYPE,&crVal);
+		std::cout<<"Transparent type "<<crVal<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_RENDERABLE_TYPE,&crVal);
+		std::cout<<"Renderable type "<<crVal<<"\n";
 		std::cout<<"--------------------------------------------------------------------------\n";
 
 }
@@ -665,23 +668,62 @@ bool ofAppEGLWindow::createSurface() {
 	iter = settings.frameBufferAttributes.begin();
 	iterEnd = settings.frameBufferAttributes.end();
 	i = 0;
-	cout << "fb attributes" << endl;
 	for(; iter != iterEnd; iter++) {
 		attribute_list_framebuffer_config[i++] = iter->first;
-		cout << attribute_list_framebuffer_config[i] << endl;
 		attribute_list_framebuffer_config[i++] = iter->second;
-		cout << attribute_list_framebuffer_config[i] << endl;
 	}
 	attribute_list_framebuffer_config[i++] = EGL_RENDERABLE_TYPE;
-			cout << attribute_list_framebuffer_config[i] << endl;
 
 	attribute_list_framebuffer_config[i++] = glesVersion; //openGL ES version
-			cout << attribute_list_framebuffer_config[i] << endl;
 
 	attribute_list_framebuffer_config[i] = EGL_NONE; // add the terminator
-			cout << attribute_list_framebuffer_config[i] << endl;
 
-	cout << "end of fb attributes" << endl;
+		std::cout<<"Desired Config"<<"\n";
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_BUFFER_SIZE,&crVal);
+		std::cout<<"Buffer Size "<<frameBufferAttributes[EGL_BUFFER_SIZE]<<"\n";
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_RED_SIZE,&crVal);
+		std::cout<<"Red Size "<<frameBufferAttributes[EGL_RED_SIZE]<<"\n";
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_GREEN_SIZE,&crVal);
+		std::cout<<"Green Size "<<frameBufferAttributes[EGL_GREEN_SIZE]<<"\n";
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_BLUE_SIZE,&crVal);
+		std::cout<<"Blue Size "<<frameBufferAttributes[EGL_BLUE_SIZE]<<"\n";
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_ALPHA_SIZE,&crVal);
+		std::cout<<"Alpha Size "<<frameBufferAttributes[EGL_ALPHA_SIZE]<<"\n";
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_CONFIG_CAVEAT,&crVal);
+		std::cout<<(frameBufferAttributes[EGL_CONFIG_CAVEAT]==EGL_NONE?"EGL_NONE":"EGL_SLOW_CONFIG")<<"\n";
+		//switch(crVal)
+		//{
+		//	case  EGL_NONE : std::cout<<"EGL_CONFIG_CAVEAT EGL_NONE\n"; break;
+		//	case  EGL_SLOW_CONFIG : std::cout<<"EGL_CONFIG_CAVEAT EGL_SLOW_CONFIG\n"; break;
+		//}
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_CONFIG_ID,&crVal);
+		//std::cout<<"Config ID "<<frameBufferAttributes[EGL_CONFIG_ID]<<"\n";
+
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_DEPTH_SIZE,&crVal);
+		std::cout<<"Depth size "<<frameBufferAttributes[EGL_DEPTH_SIZE]<<"\n";
+
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_MAX_PBUFFER_WIDTH,&crVal);
+		std::cout<<"Max pbuffer width "<<frameBufferAttributes[EGL_MAX_PBUFFER_WIDTH]<<"\n";
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_MAX_PBUFFER_HEIGHT,&crVal);
+		std::cout<<"Max pbuffer height "<<frameBufferAttributes[EGL_MAX_PBUFFER_HEIGHT]<<"\n";
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_MAX_PBUFFER_PIXELS,&crVal);
+		std::cout<<"Max pbuffer pixels "<<frameBufferAttributes[EGL_MAX_PBUFFER_PIXELS]<<"\n";
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_NATIVE_RENDERABLE,&crVal);
+		std::cout<<"Native renderable "<<std::string(frameBufferAttributes[EGL_NATIVE_RENDERABLE] ? "true" : "false")<<"\n";
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_NATIVE_VISUAL_ID,&crVal);
+		//std::cout<<"Native visual ID "<<frameBufferAttributes[EGL_NATIVE_VISUAL_ID]<<"\n";
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_NATIVE_VISUAL_TYPE,&crVal);
+		std::cout<<"Native visual type "<<frameBufferAttributes[EGL_NATIVE_VISUAL_TYPE]<<"\n";
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_SAMPLE_BUFFERS,&crVal);
+		std::cout<<"Sample Buffers "<<frameBufferAttributes[EGL_SAMPLE_BUFFERS]<<"\n";
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_SAMPLES,&crVal);
+		std::cout<<"Samples "<<frameBufferAttributes[EGL_SAMPLES]<<"\n";
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_SURFACE_TYPE,&crVal);
+		std::cout<<"Surface type "<<frameBufferAttributes[EGL_SURFACE_TYPE]<<"\n";
+		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_TRANSPARENT_TYPE,&crVal);
+		std::cout<<"Transparent type "<<frameBufferAttributes[EGL_TRANSPARENT_TYPE]<<"\n";
+		std::cout<<"Renderable type "<<frameBufferAttributes[EGL_RENDERABLE_TYPE]<<"\n";
+		std::cout<<"--------------------------------------------------------------------------\n";
 
 	EGLint num_configs;
 	
