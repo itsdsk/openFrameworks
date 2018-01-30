@@ -549,8 +549,6 @@ bool ofAppEGLWindow::createSurface() {
 		eglDisplay = eglGetDisplay(display);
 		ofLog()<<"get N display";
 	}
-	cout << display << endl;
-	cout << "display ^^" << endl;
 
 	if(eglDisplay == EGL_NO_DISPLAY) {
 		ofLogNotice("ofAppEGLWindow") << "createSurface(): eglGetDisplay returned: " << eglDisplay;
@@ -601,9 +599,63 @@ bool ofAppEGLWindow::createSurface() {
 	}else{
 		glesVersion = EGL_OPENGL_ES_BIT;
 		glesVersionForContext = 1;
+		ofLog()<<"glesVersion: " + ofToString(this->glesVersion);
 		ofLogNotice("ofAppEGLWindow") << "createSurface(): default renderer detected";
 	}
 
+	EGLBoolean configResult; EGLint configResultNum;
+	configResult = eglGetConfigs(eglDisplay, NULL, 0, &configResultNum);
+	EGLConfig *configResultPtr = new EGLConfig[configResultNum];
+	configResult=eglGetConfigs(eglDisplay, configResultPtr, configResultNum, &configResultNum);
+	EGLint crVal;
+		for(int i=0; i<configResultNum; ++i)
+	{
+		std::cout<<"Config #"<<i<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_BUFFER_SIZE,&crVal);
+		std::cout<<"Buffer Size "<<crVal<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_RED_SIZE,&crVal);
+		std::cout<<"Red Size "<<crVal<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_GREEN_SIZE,&crVal);
+		std::cout<<"Green Size "<<crVal<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_BLUE_SIZE,&crVal);
+		std::cout<<"Blue Size "<<crVal<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_ALPHA_SIZE,&crVal);
+		std::cout<<"Alpha Size "<<crVal<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_CONFIG_CAVEAT,&crVal);
+		switch(crVal)
+		{
+			case  EGL_NONE : std::cout<<"EGL_CONFIG_CAVEAT EGL_NONE\n"; break;
+			case  EGL_SLOW_CONFIG : std::cout<<"EGL_CONFIG_CAVEAT EGL_SLOW_CONFIG\n"; break;
+		}
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_CONFIG_ID,&crVal);
+		std::cout<<"Config ID "<<crVal<<"\n";
+
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_DEPTH_SIZE,&crVal);
+		std::cout<<"Depth size "<<crVal<<"\n";
+
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_MAX_PBUFFER_WIDTH,&crVal);
+		std::cout<<"Max pbuffer width "<<crVal<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_MAX_PBUFFER_HEIGHT,&crVal);
+		std::cout<<"Max pbuffer height "<<crVal<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_MAX_PBUFFER_PIXELS,&crVal);
+		std::cout<<"Max pbuffer pixels "<<crVal<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_NATIVE_RENDERABLE,&crVal);
+		std::cout<<"Native renderable "<<std::string(crVal ? "true" : "false")<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_NATIVE_VISUAL_ID,&crVal);
+		std::cout<<"Native visual ID "<<crVal<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_NATIVE_VISUAL_TYPE,&crVal);
+		std::cout<<"Native visual type "<<crVal<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_SAMPLE_BUFFERS,&crVal);
+		std::cout<<"Sample Buffers "<<crVal<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_SAMPLES,&crVal);
+		std::cout<<"Samples "<<crVal<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_SURFACE_TYPE,&crVal);
+		std::cout<<"Surface type "<<crVal<<"\n";
+		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_TRANSPARENT_TYPE,&crVal);
+		std::cout<<"--------------------------------------------------------------------------\n";
+
+}
+	
 	ofEGLAttributeListIterator iter, iterEnd;
 	int i;
 
@@ -653,6 +705,7 @@ bool ofAppEGLWindow::createSurface() {
 
 	if(num_configs <= 0 || eglConfig == NULL) {
 		ofLogError("ofAppEGLWindow") << "createSurface(): no matching configs were found, num_configs: " << num_configs;
+		exit(1);
 		return false;
 	}
 
