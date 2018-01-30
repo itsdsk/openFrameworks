@@ -679,7 +679,7 @@ cout << "framebufferattributes size:"<<endl;
 
 		//eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_SAMPLES,&crVal);
 		std::cout<<"Samples "<<settings.frameBufferAttributes[EGL_SAMPLES]<<"\n";
-		std::cout<<"EGL_OPENGL_ES_BIT"<<<<"\n";
+		std::cout<<"EGL_OPENGL_ES_BIT"<<"\n";
 		std::cout<<"--------------------------------------------------------------------------\n";
 
 	EGLint num_configs;
