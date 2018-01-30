@@ -549,6 +549,8 @@ bool ofAppEGLWindow::createSurface() {
 		eglDisplay = eglGetDisplay(display);
 		ofLog()<<"get N display";
 	}
+	cout << display << endl;
+	cout << "display ^^" << endl;
 
 	if(eglDisplay == EGL_NO_DISPLAY) {
 		ofLogNotice("ofAppEGLWindow") << "createSurface(): eglGetDisplay returned: " << eglDisplay;
@@ -577,8 +579,10 @@ bool ofAppEGLWindow::createSurface() {
 	} else {
 		// result == EGL_TRUE
 		// success!
-		cout << eglVersionMajor << " egl verion major" << endl;
-		cout << eglVersionMinor << " egl version minor" << endl;
+		cout << eglVersionMajor << endl;
+		cout << "^^ egl verion major" << endl;
+		cout << eglVersionMinor << endl;
+		cout << "^^ egl version minor" << endl;
 	}
 
 	EGLint glesVersion;
@@ -618,9 +622,9 @@ bool ofAppEGLWindow::createSurface() {
 	attribute_list_framebuffer_config[i] = EGL_NONE; // add the terminator
 
 	EGLint num_configs;
-	
+	cout << "attributes:" << endl;
 	cout << attribute_list_framebuffer_config << endl;
-
+        cout << "-----" << endl;
 	// get an appropriate EGL frame buffer configuration
 	// http://www.khronos.org/registry/egl/sdk/docs/man/xhtml/eglChooseConfig.html
 	result = eglChooseConfig(eglDisplay,
