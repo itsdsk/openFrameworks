@@ -120,9 +120,9 @@ PLATFORM_CFLAGS += -pipe
 ################################################################################
 
 # raspberry pi specific
-PLATFORM_LIBRARIES += GLESv2
-PLATFORM_LIBRARIES += GLESv1_CM
-PLATFORM_LIBRARIES += EGL
+PLATFORM_LIBRARIES += brcmGLESv2
+#PLATFORM_LIBRARIES += GLESv1_CM
+PLATFORM_LIBRARIES += brcmEGL
 PLATFORM_LIBRARIES += openmaxil
 PLATFORM_LIBRARIES += bcm_host
 PLATFORM_LIBRARIES += vcos
