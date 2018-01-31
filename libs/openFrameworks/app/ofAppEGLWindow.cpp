@@ -628,13 +628,7 @@ bool ofAppEGLWindow::createSurface() {
 		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_SAMPLES,&crVal);
 		std::cout<<"Samples "<<crVal<<"\n";
 		eglGetConfigAttrib(eglDisplay,configResultPtr[i],EGL_RENDERABLE_TYPE,&crVal);
-					switch(crVal)
-		{
-			case  EGL_OPENGL_BIT : std::cout<<"EGL_OPENGL_BIT\n"; break;
-			case  EGL_OPENGL_ES_BIT : std::cout<<"EGL_OPENGL_ES_BIT\n"; break;
-			case  EGL_OPENGL_ES2_BIT : std::cout<<"EGL_OPENGL_ES2_BIT\n"; break;
-			case  EGL_OPENVG_BIT : std::cout<<"EGL_OPENVG_BIT\n"; break;
-		}
+		std::cout<<"Renderable type "<<crVal<<"\n";
 		std::cout<<"--------------------------------------------------------------------------\n";
 
 }
