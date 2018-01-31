@@ -17,6 +17,8 @@ void ofApp::draw(){
   ofBackground(255, 0, 0);
   img.grabScreen(0,0,256,256);
   img.save("screenshot.png");
+  ofExit();
+  exit(1);
 
 }
 
