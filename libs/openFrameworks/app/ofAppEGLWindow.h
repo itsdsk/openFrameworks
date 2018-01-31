@@ -121,10 +121,10 @@ public:
 	EGLSurface getEglSurface() const;
 	EGLContext getEglContext() const;
 
-#ifndef TARGET_RASPBERRY_PI
+//#ifndef TARGET_RASPBERRY_PI
 	Display* getX11Display();
 	Window getX11Window();
-#endif
+//#endif
 
 	EGLConfig getEglConfig() const;
 
