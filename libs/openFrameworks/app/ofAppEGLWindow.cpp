@@ -635,7 +635,7 @@ bool ofAppEGLWindow::createSurface() {
 	const char *apiStr;
 	apiStr = eglQueryString(eglDisplay,  EGL_CLIENT_APIS);
 	printf("EGL_CLIENT_APIS = %s\n",apiStr);
-	eglBindApi(EGL_OPENGL_ES_API);
+	eglBindAPI(EGL_OPENGL_ES_API);
 	
 	ofEGLAttributeListIterator iter, iterEnd;
 	int i;
