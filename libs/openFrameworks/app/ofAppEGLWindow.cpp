@@ -242,7 +242,7 @@ ofAppEGLWindow::Settings::Settings()
 	frameBufferAttributes[EGL_LUMINANCE_SIZE] = EGL_DONT_CARE; // 8 bits for alpha
 	frameBufferAttributes[EGL_DEPTH_SIZE]   = 24; // 24 bits for depth
 	frameBufferAttributes[EGL_STENCIL_SIZE] = 8; // 8 bits for stencil
-	frameBufferAttributes[EGL_SAMPLES]	  = 0;
+	frameBufferAttributes[EGL_SAMPLES]	  = 1;
 
 	initialClearColor = ofColor(0.15 * 255, 0.15 * 255, 0.15 * 255, 255);
 
@@ -263,7 +263,7 @@ ofAppEGLWindow::Settings::Settings(const ofGLESWindowSettings & settings)
 	frameBufferAttributes[EGL_LUMINANCE_SIZE] = EGL_DONT_CARE; // 8 bits for alpha
 	frameBufferAttributes[EGL_DEPTH_SIZE]   = 24; // 24 bits for depth
 	frameBufferAttributes[EGL_STENCIL_SIZE] = 8; // 8 bits for stencil
-	frameBufferAttributes[EGL_SAMPLES]	  = 0;
+	frameBufferAttributes[EGL_SAMPLES]	  = 1;
 
 	initialClearColor = ofColor(0.15 * 255, 0.15 * 255, 0.15 * 255, 255);
 
