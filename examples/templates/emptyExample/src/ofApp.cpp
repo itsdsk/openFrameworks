@@ -12,6 +12,11 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+  
+  ofImage img;
+  ofBackground(255, 0, 0);
+  img.grabScreen(0,0,256,256);
+  img.save("screenshot.png");
 
 }
 
