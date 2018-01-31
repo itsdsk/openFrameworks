@@ -242,7 +242,7 @@ ofAppEGLWindow::Settings::Settings()
 	frameBufferAttributes[EGL_LUMINANCE_SIZE] = EGL_DONT_CARE; // 8 bits for alpha
 	frameBufferAttributes[EGL_DEPTH_SIZE]   = 24; // 24 bits for depth
 	frameBufferAttributes[EGL_STENCIL_SIZE] = 8; // 8 bits for stencil
-	frameBufferAttributes[EGL_SAMPLES]	  = 1;
+	frameBufferAttributes[EGL_SAMPLES]	  = 0;
 
 	initialClearColor = ofColor(0.15 * 255, 0.15 * 255, 0.15 * 255, 255);
 
@@ -263,7 +263,7 @@ ofAppEGLWindow::Settings::Settings(const ofGLESWindowSettings & settings)
 	frameBufferAttributes[EGL_LUMINANCE_SIZE] = EGL_DONT_CARE; // 8 bits for alpha
 	frameBufferAttributes[EGL_DEPTH_SIZE]   = 24; // 24 bits for depth
 	frameBufferAttributes[EGL_STENCIL_SIZE] = 8; // 8 bits for stencil
-	frameBufferAttributes[EGL_SAMPLES]	  = 1;
+	frameBufferAttributes[EGL_SAMPLES]	  = 0;
 
 	initialClearColor = ofColor(0.15 * 255, 0.15 * 255, 0.15 * 255, 255);
 
@@ -317,7 +317,7 @@ EGLContext ofAppEGLWindow::getEglContext() const {
 	return eglContext;
 }
 
-#ifndef TARGET_RASPBERRY_PI
+//#ifndef TARGET_RASPBERRY_PI
 //------------------------------------------------------------
 Display* ofAppEGLWindow::getX11Display(){
 	return x11Display;
@@ -327,7 +327,7 @@ Display* ofAppEGLWindow::getX11Display(){
 Window ofAppEGLWindow::getX11Window(){
 	return x11Window;
 }
-#endif
+//#endif
 //------------------------------------------------------------
 EGLConfig ofAppEGLWindow::getEglConfig() const {
 	return eglConfig;
@@ -346,14 +346,14 @@ EGLint ofAppEGLWindow::getEglVersionMinor() const {
 //------------------------------------------------------------
 void ofAppEGLWindow::initNative() {
 #ifdef TARGET_RASPBERRY_PI
-	initRPiNative();
+	//initRPiNative();
 #endif
 }
 
 //------------------------------------------------------------
 void ofAppEGLWindow::exitNative() {
 #ifdef TARGET_RASPBERRY_PI
-	exitRPiNative();
+	//exitRPiNative();
 #endif
 }
 
